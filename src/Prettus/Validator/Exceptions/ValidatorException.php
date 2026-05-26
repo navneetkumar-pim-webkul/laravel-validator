@@ -13,7 +13,6 @@ class ValidatorException extends Exception implements Arrayable, Jsonable
 {
     public function __construct(protected readonly MessageBag $messageBag)
     {
-        parent::__construct('Validation failed.');
     }
 
     public function getMessageBag(): MessageBag

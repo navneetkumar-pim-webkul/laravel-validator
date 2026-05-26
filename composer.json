@@ -40,5 +40,10 @@
             "Prettus\\Validator\\": "src/Prettus/Validator/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Prettus\\Validator\\Tests\\": "tests/"
+        }
+    },
     "minimum-stability": "stable"
 }

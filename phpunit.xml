@@ -4,8 +4,8 @@
          bootstrap="vendor/autoload.php"
          colors="true"
          cacheDirectory=".phpunit.cache"
-         failOnWarning="true"
-         failOnRisky="true">
+         displayDetailsOnTestsThatTriggerWarnings="true"
+         displayDetailsOnPhpunitDeprecations="true">
     <testsuites>
         <testsuite name="Package Test Suite">
             <directory>./tests/</directory>

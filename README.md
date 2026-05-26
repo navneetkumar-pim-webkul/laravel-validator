@@ -7,6 +7,8 @@
 
 ## Installation
 
+This package supports Laravel 10, 11, 12, and 13 on PHP 8.2+.
+
 Add "prettus/laravel-repository": "1.1.*" to composer.json
  
 ```json

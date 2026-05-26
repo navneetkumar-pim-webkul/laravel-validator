@@ -7,7 +7,14 @@
 
 ## Installation
 
-This package supports Laravel 10, 11, 12, and 13 on PHP 8.2+.
+This package supports Laravel 11, 12, and 13 on PHP 8.2+ (PHP 8.3+ required for Laravel 13).
+
+### Breaking changes vs prior releases
+
+- `ValidatorInterface` and `AbstractValidator` now declare typed parameters and return types. Subclasses or interface implementations must update their method signatures.
+- `ValidatorException::getMessageBag()` returns `Illuminate\Contracts\Support\MessageBag` (the contract) instead of the concrete `Illuminate\Support\MessageBag`.
+- Custom subclasses of `AbstractValidator` that override `__construct()` must call `parent::__construct()` so the internal `$errors` `MessageBag` is initialized.
+- Laravel 5.4–10 are no longer supported. Stay on a prior release if you still target those versions.
 
 Add "prettus/laravel-repository": "1.1.*" to composer.json
  

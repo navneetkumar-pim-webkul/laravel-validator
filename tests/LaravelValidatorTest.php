@@ -19,6 +19,31 @@ class LaravelValidatorTest extends TestCase
             ->with(['name' => 'Alice']);
 
         $this->assertTrue($v->passes());
+        $this->assertSame([], $v->errors());
+    }
+
+    public function test_errors_returns_empty_array_on_fresh_instance(): void
+    {
+        $v = $this->makeValidator();
+
+        $this->assertSame([], $v->errors());
+        $this->assertSame([], $v->errorsBag()->all());
+    }
+
+    public function test_validator_exception_carries_messagebag_payload(): void
+    {
+        $v = $this->makeValidator()
+            ->setRules(['name' => 'required'])
+            ->with([]);
+
+        try {
+            $v->passesOrFail();
+            $this->fail('Expected ValidatorException');
+        } catch (ValidatorException $e) {
+            $this->assertNotEmpty($e->getMessageBag()->all());
+            $this->assertSame('validation_exception', $e->toArray()['error']);
+            $this->assertJson($e->toJson());
+        }
     }
 
     public function test_passes_returns_false_and_populates_errors_when_invalid(): void

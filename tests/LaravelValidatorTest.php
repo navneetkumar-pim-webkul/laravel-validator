@@ -99,6 +99,26 @@ class LaravelValidatorTest extends TestCase
         $this->assertSame(['unique:users,email,42'], $rules['email']);
     }
 
+    public function test_set_id_rewrites_unique_rule_inside_pipe_string(): void
+    {
+        $v = $this->makeValidator()
+            ->setId(7)
+            ->setRules(['email' => 'required|unique:users']);
+
+        $rules = $v->getRules();
+        $this->assertSame(['required', 'unique:users,email,7'], $rules['email']);
+    }
+
+    public function test_set_id_leaves_non_unique_rules_untouched(): void
+    {
+        $v = $this->makeValidator()
+            ->setId(99)
+            ->setRules(['name' => 'required|max:255']);
+
+        $rules = $v->getRules();
+        $this->assertSame(['required', 'max:255'], $rules['name']);
+    }
+
     public function test_custom_messages_and_attributes_are_applied(): void
     {
         $v = $this->makeValidator()

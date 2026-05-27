@@ -16,10 +16,16 @@ This package supports Laravel 11, 12, and 13 on PHP 8.2+ (PHP 8.3+ required for 
 - Custom subclasses of `AbstractValidator` that override `__construct()` must call `parent::__construct()` so the internal `$errors` `MessageBag` is initialized.
 - Laravel 5.4–10 are no longer supported. Stay on a prior release if you still target those versions.
 
-Add "prettus/laravel-repository": "1.1.*" to composer.json
- 
+Add `prettus/laravel-validation` to your `composer.json`:
+
 ```json
-"prettus/laravel-validation": "1.1.*"
+"prettus/laravel-validation": "^2.0"
+```
+
+Or install via Composer:
+
+```bash
+composer require prettus/laravel-validation
 ```
     
 ### Create a validator

@@ -33,6 +33,6 @@ class ValidatorException extends Exception implements Arrayable, Jsonable
 
     public function toJson($options = 0): string
     {
-        return json_encode($this->toArray(), $options) ?: '';
+        return json_encode($this->toArray(), $options | JSON_THROW_ON_ERROR);
     }
 }
